@@ -1,2 +1,2 @@
 # Valo-total-playtime
-Shows the hole playtime on multiple accounts
+Webscarpes data from tracker.gg for each account which you added and counts it together
