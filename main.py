@@ -35,15 +35,18 @@ class Webscraper():
             myElem = WebDriverWait(self.browser, 1).until(EC.presence_of_element_located((By.ID, 'IdOfMyElement')))
         except TimeoutException:
             pass
-
         html = self.browser.page_source.encode("utf-8")
         soup = BeautifulSoup(html, features="html.parser")
         mydivs = soup.find_all("div", class_="value")
-        value = mydivs[0]
-        value = value.get_text(separator=" ").strip()
-    
+        
+        if len(mydivs) > 0:
+            value = mydivs[0]
+            value = value.get_text(separator=" ").strip()
+        
 
-        self.data.append(value)
+            self.data.append(value)
+        else:
+            print(f"failed to get playtime of {url} user: {user}")
 
     def commandhandler(self, read):
         """handel command inputs"""
